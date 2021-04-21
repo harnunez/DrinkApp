@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.drinkapp.MainFragment"
+        android:name="com.example.drinkapp.ui.MainFragment"
         android:label="Bebidas"
         tools:layout="@layout/fragment_main">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/tragosDetalleFragment"
-        android:name="com.example.drinkapp.TragosDetalleFragment"
+        android:name="com.example.drinkapp.ui.TragosDetalleFragment"
         android:label="Detalle"
         tools:layout="@layout/fragment_tragos_detalle" />
 </navigation>

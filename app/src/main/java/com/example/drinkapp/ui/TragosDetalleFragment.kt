@@ -1,17 +1,22 @@
-package com.example.drinkapp
+package com.example.drinkapp.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.drinkapp.R
+import com.example.drinkapp.data.model.Drink
 
 class TragosDetalleFragment : Fragment() {
 
+    private lateinit var drink: Drink
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        requireArguments().let {
+            drink = it.getParcelable("drink")!!
+        }
     }
 
     override fun onCreateView(

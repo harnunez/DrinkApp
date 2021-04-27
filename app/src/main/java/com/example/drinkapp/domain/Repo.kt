@@ -5,5 +5,5 @@ import com.example.drinkapp.vo.Resource
 
 interface Repo {
 
-    fun getTragosList(): Resource<List<Drink>>
+    suspend fun getTragosList(tragoName:String): Resource<List<Drink>>
 }

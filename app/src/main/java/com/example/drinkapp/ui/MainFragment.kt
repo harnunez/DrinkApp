@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.ResourceCursorAdapter
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
@@ -44,6 +45,32 @@ class MainFragment : Fragment(),MainAdapter.OnTragoClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupSearchView()
+
+        setupObservers()
+
+    }
+
+    private fun setupSearchView(){
+        searchView.setOnQueryTextListener(object:SearchView.OnQueryTextListener, androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                viewModel.setTrago(query!!)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
+    }
+
+    //Recycler Config
+    private fun setupRecyclerView(){
+        rv_tragos.layoutManager = LinearLayoutManager(requireContext())
+        rv_tragos.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
+    }
+
+    private fun setupObservers(){
         viewModel.fetchTragosList.observe(viewLifecycleOwner, Observer {result ->
             when(result){
                 is Resource.Loading ->{
@@ -61,13 +88,6 @@ class MainFragment : Fragment(),MainAdapter.OnTragoClickListener {
                 }
             }
         })
-
-    }
-
-    //Recycler Config
-    private fun setupRecyclerView(){
-        rv_tragos.layoutManager = LinearLayoutManager(requireContext())
-        rv_tragos.addItemDecoration(DividerItemDecoration(requireContext(),DividerItemDecoration.VERTICAL))
     }
 
     override fun onTragoClick(drink: Drink) {

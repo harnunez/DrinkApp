@@ -4,13 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
     tools:context=".ui.TragosDetalleFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:id="@+id/img_trago_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="?actionBarSize"/>
+
     <TextView
+        android:id="@+id/trago_title_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:text="Margarita Test" />
+
+    <TextView
+        android:id="@+id/trago_desc_detalle"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="FRAGMENT DETALLE TRAGOS" />
+        android:layout_marginTop="10dp"/>
 
 </LinearLayout>

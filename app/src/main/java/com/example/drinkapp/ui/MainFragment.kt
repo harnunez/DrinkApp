@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.drinkapp.AppDatabase
 import com.example.drinkapp.R
 import com.example.drinkapp.data.DataSource
 import com.example.drinkapp.data.model.Drink
@@ -27,7 +28,8 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment(),MainAdapter.OnTragoClickListener {
 
-    private val viewModel by viewModels<MainViewModel>{ VMFactory(RepoImpl(DataSource())) }
+    private val viewModel by viewModels<MainViewModel>{
+        VMFactory(RepoImpl(DataSource(AppDatabase.getDataBase(requireActivity().applicationContext)))) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +50,14 @@ class MainFragment : Fragment(),MainAdapter.OnTragoClickListener {
         setupSearchView()
 
         setupObservers()
+        irAFavoritos()
 
+    }
+
+    private fun irAFavoritos() {
+        btn_favoritos.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_favoritosFragment)
+        }
     }
 
     private fun setupSearchView(){

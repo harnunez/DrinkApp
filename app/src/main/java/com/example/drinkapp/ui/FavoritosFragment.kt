@@ -1,7 +1,6 @@
 package com.example.drinkapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.drinkapp.AppDatabase
 import com.example.drinkapp.R
-import com.example.drinkapp.data.DataSource
+import com.example.drinkapp.data.DataSourceImpl
 import com.example.drinkapp.data.model.Drink
 import com.example.drinkapp.domain.RepoImpl
 import com.example.drinkapp.ui.viewmodel.MainViewModel
@@ -24,7 +23,7 @@ import kotlinx.android.synthetic.main.fragment_favoritos.*
 class FavoritosFragment : Fragment(), MainAdapter.OnTragoClickListener {
 
     private val viewModel by viewModels<MainViewModel>{
-        VMFactory(RepoImpl(DataSource(AppDatabase.getDataBase(requireActivity().applicationContext)))) }
+        VMFactory(RepoImpl(DataSourceImpl(AppDatabase.getDataBase(requireActivity().applicationContext)))) }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +72,6 @@ class FavoritosFragment : Fragment(), MainAdapter.OnTragoClickListener {
     }
 
     override fun onTragoClick(drink: Drink) {
-        TODO("Not yet implemented")
+        //Implementar delete al tocar el trago en favoritos
     }
 }

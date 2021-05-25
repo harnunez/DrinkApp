@@ -1,6 +1,5 @@
 package com.example.drinkapp.domain
 
-import com.example.drinkapp.data.DataSource
 import com.example.drinkapp.data.model.Drink
 import com.example.drinkapp.data.model.DrinkEntity
 import com.example.drinkapp.vo.Resource
